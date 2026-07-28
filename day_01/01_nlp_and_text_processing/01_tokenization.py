@@ -49,3 +49,16 @@ print("\n piece-by-piece comparison of tokens:")
 print(f" {'Token':<12} {'IS IT A WORD?':<15} {"IS IT PUNCTUATION?":<20} {'IS IT A NUMBER?':<20}")
 for token in doc:
     print(f" {token.text:<12} {str(token.is_alpha):<15} {str(token.is_punct):<20} {token.like_num:<20}")
+
+# sentence tokenization
+paragraph = (
+    "Mandy didn't pay the EMI of Rs.45,000 on 3rd May. "
+    "The bank charged 3.5% interest. "
+    "The bank is now taking legal action against"
+    )
+
+print("\n 4. Sentence Tokenization:")
+sentences = sent_tokenize(paragraph)
+for i, s in enumerate(sentences, start=1):
+    print(f"Sentence {i}: {s}")
+print("total sentences:", len(sentences)) 

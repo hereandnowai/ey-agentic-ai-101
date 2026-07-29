@@ -63,3 +63,19 @@ for step in range(301):
 
 print(f" final: a high income now scores {sigmoid(0.9 * w + b):.0%} chance of a good loan"
       f" a low one {sigmoid(0.1 * w + b):.0%} chance")
+
+# part 4 - the same thing, in three lines of keras
+print("\n--- Part 4: The Same Thing in Three Lines of Keras ---")
+print(f" {'STEP SIZE':<12}{'ROUNDS':<9}{'HIGH INCOME':<13}{'LOW INCOME':<12}")
+for step_size in [0.001, 0.2]:
+    np.random.seed(42)
+    tf.random.set_seed(42)
+    model = tf.keras.Sequential([
+        tf.keras.layers.Input(shape=(1,)),
+        tf.keras.layers.Dense(1, activation="sigmoid")
+    ])
+    model.compile(loss="binary_crossentropy",
+                  optimizer=tf.keras.optimizers.Adam(learning_rate=step_size))
+    model.fit(X, y, epochs=300, verbose=0)
+    high, low = model.predict(np.array([0.9, 0.1]), verbose=0).flatten()
+    print(f" {step_size:<12}{300:<9}{high:.0%}{low:.0%}")

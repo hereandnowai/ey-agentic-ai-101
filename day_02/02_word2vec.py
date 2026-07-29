@@ -14,8 +14,7 @@ client = OpenAI(
     api_key=os.environ["OPENROUTER_API_KEY"],
     base_url=os.environ["OPENROUTER_BASE_URL"]
 )
-# MODEL = os.environ["OPENROUTER_EMBEDDING_MODEL"]
-MODEL = "openai/text-embedding-3-large"
+MODEL = os.environ["OPENROUTER_EMBEDDING_MODEL"]
 
 # part 1 - turn words into vectors, then into a picture
 def word_map(text):

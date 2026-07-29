@@ -14,7 +14,8 @@ client = OpenAI(
     api_key=os.environ["OPENROUTER_API_KEY"],
     base_url=os.environ["OPENROUTER_BASE_URL"]
 )
-MODEL = os.environ["OPENROUTER_EMBEDDING_MODEL"]
+# MODEL = os.environ["OPENROUTER_EMBEDDING_MODEL"]
+MODEL = "openai/text-embedding-3-large"
 
 # part 1 - turn words into vectors, then into a picture
 def word_map(text):
@@ -33,10 +34,10 @@ def word_map(text):
     for word, (x, y) in zip(words, flat):
         ax.annotate(word, (x, y), fontsize=12, xytext=(8, 5),
                     textcoords='offset points')
-        ax.set_title(f"{len(words)} words, {vectors.shape[1]} numbers each")
-        ax.grid(alpha=0.25)
-        ax.margins(0.18)
-        return fig
+    ax.set_title(f"{len(words)} words, {vectors.shape[1]} numbers each")
+    ax.grid(alpha=0.25)
+    ax.margins(0.18)
+    return fig
 
 # part 2 - make a web app
 app = gr.Interface(

@@ -11,3 +11,5 @@ absl_logging.set_verbosity(absl_logging.ERROR)  # Suppress absl logging
 import numpy as np
 import tensorflow as tf
 
+tf
+

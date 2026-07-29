@@ -6,8 +6,12 @@ readme = "README.md"
 requires-python = "==3.12.*"
 dependencies = [
     "en-core-web-sm",
+    "gradio>=6.20.0",
+    "matplotlib>=3.11.1",
     "nltk>=3.10.0",
     "numpy>=2.5.1",
+    "openai>=2.50.0",
+    "python-dotenv>=1.2.2",
     "scikit-learn>=1.9.0",
     "scipy>=1.18.0",
     "spacy>=3.8.14",

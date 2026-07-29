@@ -12,4 +12,6 @@ load_dotenv()
 
 client = OpenAI(
     api_key=os.environ["OPENROUTER_API_KEY"],
-    base_url=os.environ["OPENROUTER_BASE_URL"],
+    base_url=os.environ["OPENROUTER_BASE_URL"]
+)
+MODEL = os.environ["OPENROUTER_EMBEDDING_MODEL"]

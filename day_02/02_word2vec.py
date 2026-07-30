@@ -1,3 +1,7 @@
+# Objective of this file:
+# show how to use the OpenRouter embeddings API to turn words into vectors,
+# then into a picture. How similar words are close together, and dissimilar words are far apart.
+
 import os
 import matplotlib
 matplotlib.use('Agg')

@@ -13,7 +13,7 @@ client = OpenAI(
 )
 MODEL = os.environ["MODEL"]
 
-# 1. Define the tool to be called by the model
+# 1. Define the tool to be called by the model | tool = fucntion
 def calculate_emi(principal: float, annual_rate: float, years: int) -> dict:
     """Computer the EMI (Equated Monthly Installment) for a loan."""
     r = annual_rate / 12 / 100  # monthly interest rate

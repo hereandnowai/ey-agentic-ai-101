@@ -22,7 +22,7 @@ def cost(in_tok: int, out_tok: int) -> float:
 
 def price(in_tok: int, out_tok: int) -> str:
     usd = cost(in_tok, out_tok)
-    return f"${usd:.6f} (₹{usd * USD_INR:.4f}"
+    return f"${usd:.6f} (₹{usd * USD_INR:.4f})"
 
 POLICY = ("Sheldon Retail Bank offers a range of financial services including savings accounts, loans, and investment options."
         "Our mission is to provide exceptional customer service and innovative solutions to help our clients achieve their financial goals."
@@ -45,10 +45,9 @@ usage = response.usage
 if usage:
     print(f"Actual tokens: {usage.prompt_tokens} in, {usage.completion_tokens} out. Actual cost: {price(usage.prompt_tokens, usage.completion_tokens)}")
 
-
-# 5. Scale that one call to 10_000 calls and see what the total cost would be
-CALLS_PER_DAY = 10_000
-DAYS = 30
-monthly = cost(usage.prompt_tokens, usage.completion_tokens) * CALLS_PER_DAY * DAYS
-print(f"at {CALLS_PER_DAY} calls/day for {DAYS} days, the total cost would be: ${monthly:.2f} (₹{monthly * USD_INR:.2f})")
+    # 5. Scale that one call to 10_000 calls and see what the total cost would be
+    CALLS_PER_DAY = 10_000
+    DAYS = 30
+    monthly = cost(usage.prompt_tokens, usage.completion_tokens) * CALLS_PER_DAY * DAYS
+    print(f"at {CALLS_PER_DAY} calls/day for {DAYS} days, the total cost would be: ${monthly:.2f} (₹{monthly * USD_INR:.2f})")
 

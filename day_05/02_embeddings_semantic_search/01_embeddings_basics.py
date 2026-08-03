@@ -19,4 +19,20 @@ client = OpenAI(
     base_url=os.environ["OPENROUTER_BASE_URL"],
     api_key=os.environ["OPENROUTER_API_KEY"],
 )
-MODEL = os.environ["MODEL"]
+EMBED_MODEL = os.environ["EMBEDDING_MODEL"]
+
+def embed(text: str) -> list[float]:
+    """Return the embedding vector for a piece of text."""
+    resp = client.embeddings.create(model=EMBED_MODEL, input=text)
+    return resp.data[0].embedding
+
+vec = embed("home loan eligibility")
+print("text       : 'home loan eligibility'")
+print("vector dim :", len(vec))
+print("first 5 dim:", [round(x, 4) for x in vec[:5]])
+
+resp = client.embeddings.create(
+    model=EMBED_MODEL,
+    input=["saving account interest", "how to block a stolen card"])
+
+print("\n batched embeddings:", len(resp.data), "vectors, each dim", len(resp.data[0].embedding))

@@ -1,0 +1,1 @@
+SYSTEM_PROMPT="""You are a helpful assistant that answers questions ONLY using the provided content."""

@@ -21,7 +21,7 @@ EMBEDDING_MODEL = getenv("EMBEDDING_MODEL", "openai/text-embedding-3-small")
 DOCUMENT_URL = "https://arxiv.org/pdf/2510.26692"
 DOCUMENT_PATH = Path(__file__).parent / "kimi.pdf"
 CHROMA_PATH = Path(__file__).parent / "chroma_db"
-COLLECTION_NAME = f"kimi-{EMBEDDING_MODEL}"
+COLLECTION_NAME = f"kimi_{MODEL.replace('/', '_')}_{EMBEDDING_MODEL.replace('/', '_')}"
 
 if not OPENROUTER_API_KEY:
     raise RuntimeError("OPENROUTER_API_KEY not found. Add it to your .env file.")
@@ -91,7 +91,7 @@ prompt = ChatPromptTemplate.from_messages(
 def format_doc(docs):
     return "\n\n---\n\n".join(doc.page_content for doc in docs)
 
-rag_chain = prompt | llm | StrOutputParser
+rag_chain = prompt | llm | StrOutputParser()
 
 # step 5 - stream the answer
 def get_streaming_response(user_input):

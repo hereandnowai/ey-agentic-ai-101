@@ -42,7 +42,7 @@ def download_pdf(url, file_path):
 
 download_pdf(DOCUMENT_URL, DOCUMENT_PATH)
 
-# step 2 - llm setup
+# step 2 - llm setup & embedding setup
 llm = ChatOpenAI(
     model=MODEL,
     api_key=API_KEY,
@@ -114,5 +114,3 @@ if __name__ == "__main__":
         for kind, text in get_streaming_response(user_input):
             print(text, end="", flush=True)
         print("\n")
-    
-

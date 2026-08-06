@@ -39,9 +39,9 @@ b.add_conditional_edges(START, dispatch, ["score_one"])
 b.add_edge("score_one", END)
 graph = b.compile()
 
-people = (
+people = [
     {"name": "Shaun", "profile": "CIBIL 800m stable salary"},
     {"name": "Sheldon", "profile": "CIBIL 690, new job"},
     {"name": "Leonard", "profile": "CIBIL 610, missed payments"}
-)
+]
 print(graph.invoke({"applicants": people, "results": []})["results"])

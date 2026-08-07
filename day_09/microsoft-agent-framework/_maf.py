@@ -6,7 +6,7 @@ from agent_framework_openai import OpenAIChatCompletionClient
 
 load_dotenv(find_dotenv())
 
-BASE_URL = "hthps://openrouter.ai/api/v1"
+BASE_URL = "https://openrouter.ai/api/v1"
 BACKEND = "openrouter"
 MODEL = "openai/gpt-5.6-luna"
 

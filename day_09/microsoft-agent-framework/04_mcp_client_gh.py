@@ -37,7 +37,7 @@ async def answer(message: str, history: list[dict]) -> str:
                         if isinstance(m.get("content"), str)]
         result = await agent.run([*past, Message("user", [message])])
 
-    return f"{result.text}\n\n`tools used: {', '. join(used) or 'none'}"
+    return f"{result.text}\n\n`tools used: {', '. join(used) or 'none'}`"
 
 demo = gr.ChatInterface(
     fn=answer,
